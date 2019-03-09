@@ -1,8 +1,8 @@
 <template>
   <div class="app">
     <div id="map">
-      <GmapMap :center="{lat:35.6546455, lng:139.6960344}"
-        :zoom="7"
+      <GmapMap :center="{lat:35.654954, lng:139.694856}"
+        :zoom="17"
         map-type-id="terrain"
         style="width: 500px; height: 300px;"
       >
@@ -21,16 +21,32 @@
 
 <script>
   export default {
+    mounted() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+          this.currentLatitude = position.latitude
+          this.currentLongitude = position.longitde
+        });
+        this.markers = [
+          {position: {lat: 35.654954, lng: 139.694856}, title: 'glass_city'},
+          {position: {lat: this.currentLatitude, lng: this.currentLongitude}, title: 'glass_city2'},
+          {position: {lat: 35.655747, lng: 139.694856}, title: 'glass_city3'}
+        ]
+      } else {
+        alert("Geolocation is NOT available")
+      }
+    },
     data() {
       return {
-        center: {lat: 35.6546455, lng: 139.6960344},
-        zoom: 14,
-        markers: [
-          {position: {lat: 35.6546455, lng: 139.6960344}, title: 'marker_1'}
-        ]
-      }
+        currentLatitude: 0,
+        currentLongitude: 0,
+        // center: {lat: currentLatitude, lng: currentLongitude},
+        center: {lat: 35.654954, lng: 139.694856},
+        zoom: 8,
+        markers: []
+      };
     }
-  }
+  };
 </script>
 
 <style>
