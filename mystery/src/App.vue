@@ -23,14 +23,20 @@
   export default {
     mounted() {
       if (navigator.geolocation) {
+        // navigator.geolocation.getCurrentPosition(function(position){
         navigator.geolocation.getCurrentPosition(function(position){
-          this.currentLatitude = position.latitude
-          this.currentLongitude = position.longitde
+          this.currentLatitude2 = position.latitude
+          this.currentLongitude2 = position.longitde
+          // this.currentLatitude = 35.654954
+          // this.currentLongitude = 139.694856
         });
+        // this.currentLatitude = 35.654954
+        // this.currentLongitude = 139.694856
+        this.currentLatitude = 35.655747
+        this.currentLongitude = 139.694856
         this.markers = [
-          {position: {lat: 35.654954, lng: 139.694856}, title: 'glass_city'},
-          {position: {lat: this.currentLatitude, lng: this.currentLongitude}, title: 'glass_city2'},
-          {position: {lat: 35.655747, lng: 139.694856}, title: 'glass_city3'}
+          {position: {lat: this.currentLatitude, lng: this.currentLongitude}, title: 'glass_city'},
+          {position: {lat: this.currentLatitude2, lng: this.currentLongitude2}, title: 'glass_city2'}
         ]
       } else {
         alert("Geolocation is NOT available")
@@ -40,6 +46,8 @@
       return {
         currentLatitude: 0,
         currentLongitude: 0,
+        currentLatitude2: 0,
+        currentLongitude2: 0,
         // center: {lat: currentLatitude, lng: currentLongitude},
         center: {lat: 35.654954, lng: 139.694856},
         zoom: 8,
