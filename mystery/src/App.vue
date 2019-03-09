@@ -7,8 +7,8 @@
       </option>
     </select>
 
-    <h3>{{ selectedRally.title }}</h3>
-    <div>{{ selectedRally.desc }}</div>
+    <h3>{{ nowRally.title }}</h3>
+    <div>{{ nowRally.description }}</div>
   </div>
 </template>
 
@@ -19,16 +19,32 @@ export default {
   name: 'app',
   data: () => {
     return {
-      rallies: [
-        { id: 1, title: "神社巡り", desc: "神社を巡って運を高めよう！" },
-        { id: 2, title: "高級和牛を目指せ!", desc: "ゴールに到達して割引クーポンを得よう！" }
-      ],
-      selectedRally: ""
+      rallies: [],
+      selectedRally: null,
+      nowRally: { title: "abc", description: "desc"}
     };
+  },
+  watch: {
+    selectedRally: function() {
+      if (!this.selectedRally)
+        return;
+
+      axios
+        .get("http://localhost:3000/events/" + this.selectedRally.id)
+        .then(response => {
+          this.nowRally = response.data;
+        })
+    }
   },
   components: {
   },
   mounted() {
+    axios
+      .get("http://localhost:3000/events")
+      .then(response => {
+        console.log(response);
+        this.rallies = response.data;
+      })
   }
 }
 </script>
