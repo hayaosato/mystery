@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <div id="map">
-      <GmapMap :center="{lat:10, lng:10}"
+      <GmapMap :center="{lat:35.6546455, lng:139.6960344}"
         :zoom="7"
         map-type-id="terrain"
         style="width: 500px; height: 300px;"
@@ -23,10 +23,10 @@
   export default {
     data() {
       return {
-        center: {lat: 10, lng: 10},
+        center: {lat: 35.6546455, lng: 139.6960344},
         zoom: 14,
-        marker_items: [
-          {position: {lat: 10, lng: 10}, title: 'marker_1'}
+        markers: [
+          {position: {lat: 35.6546455, lng: 139.6960344}, title: 'marker_1'}
         ]
       }
     }
