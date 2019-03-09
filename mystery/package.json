@@ -16,6 +16,7 @@
     "@vue/cli-service": "^3.5.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "vue-browser-geolocation": "^1.5.0",
     "vue-template-compiler": "^2.5.21",
     "vue2-google-maps": "^0.10.6"
   },
@@ -29,8 +30,7 @@
       "eslint:recommended"
     ],
     "rules": {},
-    "parserOptions": {
-    }
+    "parserOptions": {}
   },
   "postcss": {
     "plugins": {
